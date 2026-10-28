@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>അമ്മമനസ്സ് — അമ്മമാർക്കായി ഒരു ശാന്തമായ ഇടം</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for Malayalam (Manjari & Noto Serif Malayalam) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Noto+Serif+Malayalam:wght@500;600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-grad-1: #0b201a;
+            --bg-grad-2: #15352b;
+            --bg-grad-3: #1e4638;
+            --accent: #6ee7b7;
+            --accent-glow: rgba(110, 231, 183, 0.35);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.16);
+            --text-main: #f0fdf4;
+        }
+
+        body {
+            font-family: 'Noto Sans Malayalam', 'Manjari', sans-serif;
+            background: linear-gradient(135deg, var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3));
+            background-size: 300% 300%;
+            animation: gradientFlow 22s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+            transition: background 1.2s ease, color 0.8s ease;
+        }
+
+        h1, h2, h3, .serif-ml {
+            font-family: 'Noto Serif Malayalam', serif;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Large Touch-Friendly Range Slider for Mothers */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            height: 10px;
+            border-radius: 999px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            box-shadow: 0 0 12px var(--accent-glow);
+            transition: transform 0.2s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.18);
+        }
+
+        /* Breathing Lotus Orb Animation */
+        .breath-orb {
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.5), var(--accent) 65%, transparent 100%);
+            box-shadow: 0 0 65px var(--accent-glow), inset 0 0 35px rgba(255,255,255,0.45);
+            will-change: transform;
+        }
+        .breath-ring-1, .breath-ring-2 {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid var(--accent);
+            opacity: 0.28;
+            pointer-events: none;
+            will-change: transform, opacity;
+        }
+
+        /* Thought Dissolve Flower Effect */
+        @keyframes floatAwayFlower {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
+            65% {
+                opacity: 0.75;
+                filter: blur(1px);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-135px) scale(1.2);
+                filter: blur(6px);
+            }
+        }
+        .dissolving-thought {
+            animation: floatAwayFlower 4.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+    </style>
+</head>
+<body class="relative selection:bg-emerald-400/30 selection:text-white">
+
+    <!-- Ambient Background Particles Canvas -->
+    <canvas id="ambient-bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Main Content Container -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-9 flex flex-col min-h-screen">
+        
+        <!-- Top Header & Theme Bar -->
+        <header class="flex flex-col lg:flex-row items-center justify-between gap-5 pb-7 border-b border-white/15">
+            <div class="flex items-center gap-4 text-center sm:text-left">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-white/15 border border-white/25 shadow-inner shrink-0">
+                    <i data-lucide="flower-2" class="w-6 h-6 text-amber-300"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-wide">അമ്മമനസ്സ്</h1>
+                    <p class="text-sm sm:text-base opacity-85 mt-0.5">വീട്ടുതിരക്കുകൾക്കിടയിൽ അമ്മമാർക്ക് ആശ്വാസമേകാൻ ഒരു ശാന്തമായ ഇടം</p>
+                </div>
+            </div>
+
+            <!-- Culturally Warm Kerala Themes & Instant Calm Button -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5">
+                <div class="glass-card p-1.5 rounded-2xl flex flex-wrap items-center justify-center gap-1.5 text-xs sm:text-sm">
+                    <button onclick="setTheme('rain')" id="theme-rain" class="theme-btn px-3.5 py-2 rounded-xl bg-white/25 font-semibold transition flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-400"></span> തൊടിയിലെ മഴ
+                    </button>
+                    <button onclick="setTheme('deepam')" id="theme-deepam" class="theme-btn px-3.5 py-2 rounded-xl hover:bg-white/15 transition flex items-center gap-2 opacity-80">
+                        <span class="w-3 h-3 rounded-full bg-amber-400"></span> സന്ധ്യാ ദീപം
+                    </button>
+                    <button onclick="setTheme('kayal')" id="theme-kayal" class="theme-btn px-3.5 py-2 rounded-xl hover:bg-white/15 transition flex items-center gap-2 opacity-80">
+                        <span class="w-3 h-3 rounded-full bg-cyan-400"></span> കായൽക്കാറ്റ്
+                    </button>
+                    <button onclick="setTheme('morning')" id="theme-morning" class="theme-btn px-3.5 py-2 rounded-xl hover:bg-white/15 transition flex items-center gap-2 opacity-80">
+                        <span class="w-3 h-3 rounded-full bg-rose-300"></span> പുലർകാലം
+                    </button>
+                </div>
+
+                <button onclick="activateInstantCalm()" class="glass-card px-4 py-2.5 rounded-2xl text-sm font-semibold hover:bg-white/20 active:scale-95 transition flex items-center gap-2 border border-amber-300/50 text-amber-100 shadow-lg">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+                    <span>എല്ലാം ചേർന്ന ശാന്തത</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Heartfelt Mother's Affirmation Banner ("അമ്മയ്ക്കൊരു സാന്ത്വനം") -->
+        <div class="my-6 glass-card rounded-3xl p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-5 border-l-4 border-l-amber-300">
+            <div class="flex items-start sm:items-center gap-4 text-center sm:text-left">
+                <div class="hidden sm:flex w-11 h-11 rounded-2xl bg-amber-400/20 border border-amber-300/30 items-center justify-center shrink-0">
+                    <i data-lucide="heart" class="w-5 h-5 text-amber-200"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-200/90 block mb-1">അമ്മയ്ക്കൊരു സാന്ത്വനം</span>
+                    <p id="affirmation-text" class="serif-ml text-base sm:text-xl font-medium leading-relaxed">
+                        "എല്ലാവരുടെയും കാര്യം നോക്കുന്നതിനിടയിൽ അമ്മ സ്വന്തം കാര്യം മറക്കരുത്. അല്പം വിശ്രമിക്കാൻ അമ്മയ്ക്കും അവകാശമുണ്ട്."
+                    </p>
+                </div>
+            </div>
+            <button onclick="nextAffirmation()" class="shrink-0 text-sm px-4 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 active:scale-95 font-medium transition flex items-center gap-2">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i> മറ്റൊരു സന്ദേശം
+            </button>
+        </div>
+
+        <!-- Navigation Tabs (Large & Clear for Mothers) -->
+        <nav class="flex overflow-x-auto pb-2 mb-6 gap-2.5 sm:justify-center border-b border-white/15 no-scrollbar">
+            <button onclick="switchTab('all')" id="tab-all" class="tab-btn px-4 py-3 rounded-2xl bg-white/25 font-semibold text-sm sm:text-base whitespace-nowrap transition flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i> എല്ലാം കാണുക
+            </button>
+            <button onclick="switchTab('breathe')" id="tab-breathe" class="tab-btn px-4 py-3 rounded-2xl hover:bg-white/15 text-sm sm:text-base whitespace-nowrap opacity-80 transition flex items-center gap-2">
+                <i data-lucide="wind" class="w-4 h-4"></i> ശ്വാസോച്ഛ്വാസം
+            </button>
+            <button onclick="switchTab('pond')" id="tab-pond" class="tab-btn px-4 py-3 rounded-2xl hover:bg-white/15 text-sm sm:text-base whitespace-nowrap opacity-80 transition flex items-center gap-2">
+                <i data-lucide="droplets" class="w-4 h-4"></i> താമരക്കുളം
+            </button>
+            <button onclick="switchTab('release')" id="tab-release" class="tab-btn px-4 py-3 rounded-2xl hover:bg-white/15 text-sm sm:text-base whitespace-nowrap opacity-80 transition flex items-center gap-2">
+                <i data-lucide="feather" class="w-4 h-4"></i> ആധികൾ ഒഴുക്കിവിടാം
+            </button>
+            <button onclick="switchTab('grounding')" id="tab-grounding" class="tab-btn px-4 py-3 rounded-2xl hover:bg-white/15 text-sm sm:text-base whitespace-nowrap opacity-80 transition flex items-center gap-2">
+                <i data-lucide="coffee" class="w-4 h-4"></i> 5 മിനിറ്റ് അമ്മയ്ക്ക്
+            </button>
+        </nav>
+
+        <!-- Main Sanctuary Grid -->
+        <main id="main-grid" class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
+
+            <!-- SECTION 1: Simple Guided Breathing ("ശ്വാസോച്ഛ്വാസം") -->
+            <section id="section-breathe" class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+                    <div>
+                        <span class="text-xs sm:text-sm opacity-80">മനസ്സും ശരീരവും തണുപ്പിക്കാൻ</span>
+                        <h2 class="text-xl sm:text-2xl font-bold mt-0.5">ശ്വാസോച്ഛ്വാസം</h2>
+                    </div>
+
+                    <!-- Breathing Mode Selector -->
+                    <div class="flex flex-wrap gap-1.5 bg-black/25 p-1.5 rounded-2xl border border-white/15">
+                        <button onclick="setBreathingMode('box')" id="mode-box" class="mode-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white/25 transition">
+                            സാധാരണ ശ്വാസം (4-4-4)
+                        </button>
+                        <button onclick="setBreathingMode('relax')" id="mode-relax" class="mode-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-medium opacity-75 hover:opacity-100 transition">
+                            ഗാഢമായ വിശ്രമം (4-7-8)
+                        </button>
+                        <button onclick="setBreathingMode('coherent')" id="mode-coherent" class="mode-btn px-3 py-2 rounded-xl text-xs sm:text-sm font-medium opacity-75 hover:opacity-100 transition">
+                            ശാന്തമായ ശ്വാസം (5-5)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual Breathing Lotus Orb Area -->
+                <div class="relative flex flex-col items-center justify-center my-8 h-64 sm:h-72 select-none">
+                    <div id="breath-ring-outer" class="breath-ring-1 w-64 h-64"></div>
+                    <div id="breath-ring-inner" class="breath-ring-2 w-52 h-52"></div>
+                    
+                    <div id="breath-orb" class="breath-orb flex flex-col items-center justify-center text-center p-5 relative z-10">
+                        <span id="breath-instruction" class="serif-ml text-lg sm:text-xl font-bold tracking-wide drop-shadow">
+                            ശ്വാസം ഉള്ളിലേക്ക് എടുക്കൂ...
+                        </span>
+                        <span id="breath-timer" class="text-2xl sm:text-3xl font-semibold mt-2 opacity-95">
+                            4 സെക്കൻഡ്
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Breathing Footer Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/15 text-sm">
+                    <div class="flex items-center gap-3">
+                        <button id="breath-toggle-btn" onclick="toggleBreathing()" class="px-5 py-2.5 rounded-2xl bg-white/20 hover:bg-white/30 font-semibold transition flex items-center gap-2">
+                            <i data-lucide="pause" class="w-4 h-4" id="breath-toggle-icon"></i>
+                            <span id="breath-toggle-text">നിർത്താം</span>
+                        </button>
+                        <span id="breath-mode-desc" class="opacity-85 hidden sm:inline text-xs sm:text-sm">
+                            നെഞ്ചിടിപ്പും ടെൻഷനും കുറയ്ക്കാൻ സഹായിക്കുന്നു
+                        </span>
+                    </div>
+                    <div class="opacity-85 font-medium">
+                        വിശ്രമ സമയം: <span id="session-clock" class="font-mono">00:00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: Kerala Soundscape Mixer ("ശാന്തമായ ശബ്ദങ്ങൾ") -->
+            <section id="section-sound" class="lg:col-span-5 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-xs sm:text-sm opacity-80">മനസ്സിന് കുളിർമ്മയേകാൻ</span>
+                            <h2 class="text-xl sm:text-2xl font-bold mt-0.5">ശാന്തമായ ശബ്ദങ്ങൾ</h2>
+                        </div>
+                        <button onclick="stopAllSounds()" class="text-xs sm:text-sm px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 transition flex items-center gap-1.5">
+                            <i data-lucide="volume-x" class="w-4 h-4"></i> നിശബ്ദമാക്കുക
+                        </button>
+                    </div>
+
+                    <p class="text-sm opacity-80 mb-5">
+                        ഇഷ്ടമുള്ള ശബ്ദങ്ങൾ തിരഞ്ഞെടുത്ത് അതിന്റെ ശബ്ദക്രമം (Volume) കൂട്ടുകയോ കുറയ്ക്കുകയോ ചെയ്യാം.
+                    </p>
+
+                    <!-- Sound Controls List -->
+                    <div class="space-y-4">
+                        <!-- Sound 1: Gentle Kerala Rain (ചാറ്റൽ മഴ) -->
+                        <div class="p-4 rounded-2xl bg-black/20 border border-white/15">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="toggleSound('rain')" id="btn-sound-rain" class="w-11 h-11 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                                        <i data-lucide="cloud-rain" class="w-5 h-5"></i>
+                                    </button>
+                                    <div>
+                                        <div class="text-base font-semibold">ചാറ്റൽ മഴ</div>
+                                        <div class="text-xs opacity-75">തൊടിയിൽ പെയ്യുന്ന ശാന്തമായ മഴ</div>
+                                    </div>
+                                </div>
+                                <span id="val-sound-rain" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white/10">ഓഫ്</span>
+                            </div>
+                            <input type="range" id="slider-sound-rain" min="0" max="100" value="0" oninput="changeSoundVolume('rain', this.value)">
+                        </div>
+
+                        <!-- Sound 2: Courtyard Breeze & Leaves (കാറ്റും ഇലകളുടെ മർമ്മരവും) -->
+                        <div class="p-4 rounded-2xl bg-black/20 border border-white/15">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="toggleSound('ocean')" id="btn-sound-ocean" class="w-11 h-11 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                                        <i data-lucide="trees" class="w-5 h-5"></i>
+                                    </button>
+                                    <div>
+                                        <div class="text-base font-semibold">കാറ്റും ഇലകളുടെ മർമ്മരവും</div>
+                                        <div class="text-xs opacity-75">തണുത്ത കായൽക്കാറ്റും മരങ്ങളും</div>
+                                    </div>
+                                </div>
+                                <span id="val-sound-ocean" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white/10">ഓഫ്</span>
+                            </div>
+                            <input type="range" id="slider-sound-ocean" min="0" max="100" value="0" oninput="changeSoundVolume('ocean', this.value)">
+                        </div>
+
+                        <!-- Sound 3: Temple Bell / Omkara Chime (ക്ഷേത്രമണി / ഓംകാര നാദം) -->
+                        <div class="p-4 rounded-2xl bg-black/20 border border-white/15">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="toggleSound('bowl')" id="btn-sound-bowl" class="w-11 h-11 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                                        <i data-lucide="bell" class="w-5 h-5"></i>
+                                    </button>
+                                    <div>
+                                        <div class="text-base font-semibold">ക്ഷേത്രമണി / ഓംകാര നാദം</div>
+                                        <div class="text-xs opacity-75">മനസ്സിന് ഏകാഗ്രത നൽകുന്ന മണിനാദം</div>
+                                    </div>
+                                </div>
+                                <span id="val-sound-bowl" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white/10">ഓഫ്</span>
+                            </div>
+                            <input type="range" id="slider-sound-bowl" min="0" max="100" value="0" oninput="changeSoundVolume('bowl', this.value)">
+                        </div>
+
+                        <!-- Sound 4: Soothing Tambura / Shruti (ശാന്തമായ തംബുരു ശ്രുതി) -->
+                        <div class="p-4 rounded-2xl bg-black/20 border border-white/15">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-3">
+                                    <button onclick="toggleSound('binaural')" id="btn-sound-binaural" class="w-11 h-11 rounded-xl bg-white/15 hover:bg-white/25 flex items-center justify-center transition shrink-0">
+                                        <i data-lucide="music" class="w-5 h-5"></i>
+                                    </button>
+                                    <div>
+                                        <div class="text-base font-semibold">ശാന്തമായ തംബുരു ശ്രുതി</div>
+                                        <div class="text-xs opacity-75">തലവേദനയും പിരിമുറുക്കവും കുറയ്ക്കാൻ</div>
+                                    </div>
+                                </div>
+                                <span id="val-sound-binaural" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-white/10">ഓഫ്</span>
+                            </div>
+                            <input type="range" id="slider-sound-binaural" min="0" max="100" value="0" oninput="changeSoundVolume('binaural', this.value)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-xs sm:text-sm opacity-85">
+                    <span>ശബ്ദം കേൾക്കാൻ ഐക്കണിൽ തൊടുക</span>
+                    <button onclick="ringManualChime()" class="px-3 py-1.5 rounded-xl bg-amber-400/20 border border-amber-300/40 text-amber-100 font-medium hover:bg-amber-400/30 transition">
+                        🔔 മണി മുഴക്കുക
+                    </button>
+                </div>
+            </section>
+
+            <!-- SECTION 3: Interactive Lotus & Diya Pond ("താമരക്കുളം") -->
+            <section id="section-pond" class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <div>
+                        <span class="text-xs sm:text-sm opacity-80">വിരൽത്തുമ്പിലെ ശാന്തത</span>
+                        <h2 class="text-xl sm:text-2xl font-bold mt-0.5">താമരക്കുളവും ചെരാതുകളും</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="toggleAutoDrops()" id="auto-drop-btn" class="text-xs sm:text-sm px-3.5 py-2 rounded-xl bg-white/20 hover:bg-white/30 font-medium transition">
+                            മഴത്തുള്ളികൾ: ഓൺ
+                        </button>
+                        <button onclick="clearPond()" class="text-xs sm:text-sm px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition">
+                            തെളിഞ്ഞ ജലം
+                        </button>
+                    </div>
+                </div>
+
+                <p class="text-sm opacity-80 mb-4">
+                    വെള്ളത്തിന് മുകളിലൂടെ വിരൽ ഓടിച്ചു നോക്കൂ... താമരയിതളുകളും ചെരാതുകളും ഓളങ്ങളിൽ ഒഴുകുന്നത് കാണാം.
+                </p>
+
+                <div class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-black/35 border border-white/20 shadow-inner">
+                    <canvas id="zen-pond-canvas" class="w-full h-full cursor-pointer touch-none block"></canvas>
+                    <div class="absolute bottom-3 right-3 pointer-events-none text-xs opacity-70 bg-black/50 px-3 py-1.5 rounded-full">
+                        ഇവിടെ വിരൽ തൊട്ടു നീക്കൂ 🌸
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: Worry Release ("മനസ്സിലെ ഭാരങ്ങൾ ഒഴുക്കിവിടാം") -->
+            <section id="section-release" class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+                <div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div>
+                            <span class="text-xs sm:text-sm opacity-80">മനസ്സ് ഒന്ന് हलुका (ലഘു) ആക്കാൻ</span>
+                            <h2 class="text-xl sm:text-2xl font-bold mt-0.5">മനസ്സിലെ ഭാരങ്ങൾ ഒഴുക്കിവിടാം</h2>
+                        </div>
+                        <span id="released-count" class="text-xs sm:text-sm px-3 py-1.5 rounded-full bg-white/15 font-medium">
+                            0 ഭാരങ്ങൾ ഒഴുക്കിവിട്ടു
+                        </span>
+                    </div>
+
+                    <p class="text-sm opacity-80 mb-3">
+                        അമ്മയെ അലട്ടുന്ന ചിന്തകളിൽ ഒന്ന് താഴെ തിരഞ്ഞെടുക്കുകയോ എഴുതുകയോ ചെയ്ത് കാറ്റിലേക്ക് പറത്തിവിടൂ:
+                    </p>
+
+                    <!-- Quick-Select Worry Chips for Mothers (No typing needed!) -->
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button type="button" onclick="quickReleaseWorry('വീട്ടുജോലി തിരക്കുകൾ')" class="text-xs sm:text-sm px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 transition">
+                            🍲 വീട്ടുജോലി തിരക്കുകൾ
+                        </button>
+                        <button type="button" onclick="quickReleaseWorry('മക്കളെക്കുറിച്ചുള്ള ആധി')" class="text-xs sm:text-sm px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 transition">
+                            👨‍👩‍👧 മക്കളെക്കുറിച്ചുള്ള ആധി
+                        </button>
+                        <button type="button" onclick="quickReleaseWorry('ശരീരവേദനയും ക്ഷീണവും')" class="text-xs sm:text-sm px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 transition">
+                            💆‍♀️ ശരീരവേദനയും ക്ഷീണവും
+                        </button>
+                        <button type="button" onclick="quickReleaseWorry('സാമ്പത്തിക ചിന്തകൾ')" class="text-xs sm:text-sm px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 transition">
+                            🪙 സാമ്പത്തിക ചിന്തകൾ
+                        </button>
+                        <button type="button" onclick="quickReleaseWorry('സമയമില്ലായ്മ')" class="text-xs sm:text-sm px-3 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 transition">
+                            ⏳ സമയമില്ലായ്മ
+                        </button>
+                    </div>
+
+                    <!-- Floating Release Stage -->
+                    <div id="thought-stage" class="relative h-32 rounded-2xl bg-black/25 border border-white/15 mb-4 flex items-center justify-center p-4 overflow-hidden">
+                        <p id="thought-placeholder" class="serif-ml text-sm sm:text-base opacity-70 text-center">
+                            എല്ലാ ഭാരങ്ങളും അമ്മ ഒറ്റയ്ക്ക് ചുമക്കേണ്ടതില്ല...
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Thought Input Controls -->
+                <form onsubmit="releaseThought(event)" class="flex flex-col sm:flex-row gap-2.5">
+                    <input 
+                        type="text" 
+                        id="thought-input" 
+                        maxlength="110"
+                        placeholder="അല്ലെങ്കിൽ മനസ്സിലെ വിഷമം ഇവിടെ എഴുതാം..." 
+                        class="flex-grow px-4 py-3 rounded-2xl bg-black/30 border border-white/20 text-sm sm:text-base placeholder:text-white/50 focus:outline-none focus:border-white/50 transition"
+                    >
+                    <button type="submit" class="px-5 py-3 rounded-2xl bg-amber-400/25 hover:bg-amber-400/35 border border-amber-300/40 active:scale-95 font-semibold text-sm sm:text-base transition flex items-center justify-center gap-2 shrink-0">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>ഒഴുക്കിവിടുക</span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- SECTION 5: "5 മിനിറ്റ് അമ്മയ്ക്ക് മാത്രം" (Quick Self-Care Checklist for Amma) -->
+            <section id="section-grounding" class="lg:col-span-12 glass-card rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <span class="text-xs sm:text-sm opacity-80">സ്വന്തം ആരോഗ്യത്തിനും സന്തോഷത്തിനും</span>
+                        <h2 class="text-xl sm:text-2xl font-bold mt-0.5">5 മിനിറ്റ് അമ്മയ്ക്ക് മാത്രം ❤️</h2>
+                        <p class="text-sm opacity-85 mt-1">
+                            ഓരോ ചെറിയ കാര്യവും പൂർത്തിയാക്കുമ്പോൾ അതിൽ തൊട്ട് അടയാളപ്പെടുത്തൂ.
+                        </p>
+                    </div>
+                    <button onclick="resetGrounding()" class="self-start sm:self-center text-xs sm:text-sm px-4 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 font-medium transition flex items-center gap-2">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i> വീണ്ടും തുടങ്ങാം
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="grounding-cards">
+                    <!-- Step 1 -->
+                    <div onclick="toggleGroundingStep(0)" id="ground-card-0" class="cursor-pointer p-5 rounded-2xl bg-black/25 border border-white/15 hover:bg-white/15 transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">☕</span>
+                            <div class="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center ground-check">
+                                <i data-lucide="check" class="w-4 h-4 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base mb-1.5">ഒരു കപ്പ് ചൂടുവെള്ളം / ചായ</h3>
+                            <p class="text-xs sm:text-sm opacity-80">ഒരു ഗ്ലാസ് ഇളം ചൂടുവെള്ളമോ ചായയോ തിരക്കില്ലാതെ സാവധാനം ആസ്വദിച്ച് കുടിക്കുക.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div onclick="toggleGroundingStep(1)" id="ground-card-1" class="cursor-pointer p-5 rounded-2xl bg-black/25 border border-white/15 hover:bg-white/15 transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">🌿</span>
+                            <div class="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center ground-check">
+                                <i data-lucide="check" class="w-4 h-4 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base mb-1.5">5 ദീർഘശ്വാസം</h3>
+                            <p class="text-xs sm:text-sm opacity-80">കണ്ണുകൾ പതുക്കെ അടച്ച് 5 തവണ ആഴത്തിൽ ശ്വാസം ഉള്ളിലേക്കും പുറത്തേക്കും എടുക്കുക.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div onclick="toggleGroundingStep(2)" id="ground-card-2" class="cursor-pointer p-5 rounded-2xl bg-black/25 border border-white/15 hover:bg-white/15 transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">💆‍♀️</span>
+                            <div class="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center ground-check">
+                                <i data-lucide="check" class="w-4 h-4 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base mb-1.5">തോളുകൾ അയച്ചിടാം</h3>
+                            <p class="text-xs sm:text-sm opacity-80">തോളുകളും കഴുത്തും കൈകാലുകളും സാവധാനം അയച്ചിട്ട് കസേരയിൽ ചാരി ഇരിക്കുക.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div onclick="toggleGroundingStep(3)" id="ground-card-3" class="cursor-pointer p-5 rounded-2xl bg-black/25 border border-white/15 hover:bg-white/15 transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">🪟</span>
+                            <div class="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center ground-check">
+                                <i data-lucide="check" class="w-4 h-4 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base mb-1.5">പുറത്തെ പച്ചപ്പ് കാണാം</h3>
+                            <p class="text-xs sm:text-sm opacity-80">ജനലിലൂടെയോ മുറ്റത്തേക്കോ ഇറങ്ങി മരങ്ങളിലേക്കും ആകാശത്തേക്കും അല്പനേരം നോക്കിയിരിക്കുക.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div onclick="toggleGroundingStep(4)" id="ground-card-4" class="cursor-pointer p-5 rounded-2xl bg-black/25 border border-white/15 hover:bg-white/15 transition flex flex-col justify-between">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl">❤️</span>
+                            <div class="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center ground-check">
+                                <i data-lucide="check" class="w-4 h-4 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base mb-1.5">സ്വയം അഭിനന്ദിക്കാം</h3>
+                            <p class="text-xs sm:text-sm opacity-80">സ്വയം മനസ്സിൽ പറയുക: "ഞാൻ എന്റെ കുടുംബത്തിനായി എന്റെ പരമാവധി ചെയ്യുന്നുണ്ട്."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="grounding-complete-banner" class="hidden mt-5 p-4 rounded-2xl bg-emerald-500/25 border border-emerald-300/40 text-center text-base sm:text-lg serif-ml font-medium">
+                    🌸 വളരെ സന്തോഷം അമ്മേ! അമ്മയുടെ മനസ്സും ശരീരവും എപ്പോഴും ആരോഗ്യത്തോടെയും സമാധാനത്തോടെയും ഇരിക്കട്ടെ.
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-10 pt-6 border-t border-white/15 text-center text-xs sm:text-sm opacity-75 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <span>അമ്മമനസ്സ് — എല്ലാ അമ്മമാരുടെയും മനസ്സിന് കുളിർമ്മയേകാൻ സ്നേഹത്തോടെ തയ്യാറാക്കിയത്.</span>
+            <span>ഓർമ്മിക്കുക: അമ്മയുടെ ആരോഗ്യവും സന്തോഷവുമാണ് വീടിന്റെ വെളിച്ചം.</span>
+        </footer>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        /* ==========================================================================
+           1. KERALA CULTURAL THEME ENGINE & MOTHER'S AFFIRMATIONS
+           ========================================================================== */
+        const themes = {
+            rain: {
+                bg1: '#091f18',
+                bg2: '#13362a',
+                bg3: '#1d4a3a',
+                accent: '#6ee7b7',
+                glow: 'rgba(110, 231, 183, 0.35)',
+                particleColor: '167, 243, 208'
+            },
+            deepam: {
+                bg1: '#23120b',
+                bg2: '#3d2010',
+                bg3: '#572f16',
+                accent: '#fcd34d',
+                glow: 'rgba(252, 211, 77, 0.38)',
+                particleColor: '253, 230, 138'
+            },
+            kayal: {
+                bg1: '#071b26',
+                bg2: '#0e3142',
+                bg3: '#15495c',
+                accent: '#67e8f9',
+                glow: 'rgba(103, 232, 249, 0.35)',
+                particleColor: '165, 243, 252'
+            },
+            morning: {
+                bg1: '#24121f',
+                bg2: '#3d1e33',
+                bg3: '#542a42',
+                accent: '#fda4af',
+                glow: 'rgba(253, 164, 175, 0.35)',
+                particleColor: '254, 205, 211'
+            }
+        };
+
+        let currentParticleRGB = themes.rain.particleColor;
+
+        function setTheme(themeKey) {
+            const t = themes[themeKey];
+            if (!t) return;
+            const root = document.documentElement;
+            root.style.setProperty('--bg-grad-1', t.bg1);
+            root.style.setProperty('--bg-grad-2', t.bg2);
+            root.style.setProperty('--bg-grad-3', t.bg3);
+            root.style.setProperty('--accent', t.accent);
+            root.style.setProperty('--accent-glow', t.glow);
+            currentParticleRGB = t.particleColor;
+
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('bg-white/25', 'font-semibold');
+                btn.classList.add('opacity-80');
+            });
+            const activeBtn = document.getElementById(`theme-${themeKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white/25', 'font-semibold');
+                activeBtn.classList.remove('opacity-80');
+            }
+        }
+
+        const affirmations = [
+            "എല്ലാവരുടെയും കാര്യം നോക്കുന്നതിനിടയിൽ അമ്മ സ്വന്തം കാര്യം മറക്കരുത്. അല്പം വിശ്രമിക്കാൻ അമ്മയ്ക്കും അവകാശമുണ്ട്.",
+            "ഇന്ന് ചെയ്ത ജോലികളൊക്കെ ധാരാളമാണ്. ബാക്കി കാര്യങ്ങൾ നാളെ നോക്കാം, ഇപ്പോൾ അല്പനേരം മനസ്സ് ശാന്തമാക്കൂ.",
+            "അമ്മയുടെ പുഞ്ചിരിയാണ് ഈ വീടിന്റെ ഐശ്വര്യം. അല്പനേരം കണ്ണടച്ച് സ്വസ്ഥമായി ഇരിക്കൂ.",
+            "എല്ലാ കാര്യങ്ങളും എപ്പോഴും പൂർണ്ണമാകണമെന്നില്ല. ചെറിയ കുറവുകളൊക്കെ സ്വാഭാവികമാണ്, വിഷമിക്കേണ്ട.",
+            "മക്കളുടെയും കുടുംബത്തിന്റെയും സന്തോഷത്തിനായി അമ്മ എടുക്കുന്ന ഓരോ പ്രയത്നവും വിലമതിക്കാനാവാത്തതാണ്.",
+            "തോളുകൾ അയച്ചിട്ട് ഒരു ദീർഘശ്വാസം എടുക്കൂ... ഈ നിമിഷം അമ്മയ്ക്ക് സമാധാനം മാത്രമുള്ളതാണ്.",
+            "ശരീരത്തിന് ക്ഷീണം തോന്നുമ്പോൾ വിശ്രമിക്കുന്നത് മടിയല്ല, അത് അമ്മയുടെ ആരോഗ്യത്തിന് അത്യന്താപേക്ഷിതമാണ്."
+        ];
+        let affirmationIndex = 0;
+
+        function nextAffirmation() {
+            affirmationIndex = (affirmationIndex + 1) % affirmations.length;
+            const el = document.getElementById('affirmation-text');
+            el.style.opacity = '0';
+            setTimeout(() => {
+                el.textContent = `"${affirmations[affirmationIndex]}"`;
+                el.style.transition = 'opacity 0.5s ease';
+                el.style.opacity = '1';
+            }, 250);
+        }
+
+        /* ==========================================================================
+           2. TAB VIEW NAVIGATION
+           ========================================================================== */
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-white/25', 'font-semibold');
+                btn.classList.add('opacity-80');
+            });
+            const activeTab = document.getElementById(`tab-${tab}`);
+            if (activeTab) {
+                activeTab.classList.add('bg-white/25', 'font-semibold');
+                activeTab.classList.remove('opacity-80');
+            }
+
+            const sections = {
+                breathe: document.getElementById('section-breathe'),
+                sound: document.getElementById('section-sound'),
+                pond: document.getElementById('section-pond'),
+                release: document.getElementById('section-release'),
+                grounding: document.getElementById('section-grounding')
+            };
+
+            Object.values(sections).forEach(sec => {
+                sec.classList.remove('hidden', 'lg:col-span-12', 'lg:col-span-7', 'lg:col-span-6', 'lg:col-span-5');
+            });
+
+            if (tab === 'all') {
+                sections.breathe.classList.add('lg:col-span-7');
+                sections.sound.classList.add('lg:col-span-5');
+                sections.pond.classList.add('lg:col-span-6');
+                sections.release.classList.add('lg:col-span-6');
+                sections.grounding.classList.add('lg:col-span-12');
+            } else {
+                Object.entries(sections).forEach(([key, sec]) => {
+                    if (key === tab) {
+                        sec.classList.add('lg:col-span-12');
+                    } else if (key === 'sound' && tab === 'breathe') {
+                        sec.classList.add('lg:col-span-5');
+                        sections.breathe.classList.remove('lg:col-span-12');
+                        sections.breathe.classList.add('lg:col-span-7');
+                    } else {
+                        sec.classList.add('hidden');
+                    }
+                });
+            }
+
+            setTimeout(resizePondCanvas, 60);
+        }
+
+        /* ==========================================================================
+           3. GUIDED BREATHING PACER IN MALAYALAM
+           ========================================================================== */
+        const breathingModes = {
+            box: {
+                name: 'സാധാരണ ശ്വാസം',
+                desc: 'നെഞ്ചിടിപ്പും ടെൻഷനും കുറയ്ക്കാൻ സഹായിക്കുന്നു',
+                phases: [
+                    { label: 'ശ്വാസം ഉള്ളിലേക്ക് എടുക്കൂ...', duration: 4, scaleStart: 0.68, scaleEnd: 1.22 },
+                    { label: 'അല്പനേരം പിടിച്ചു നിർത്തൂ...', duration: 4, scaleStart: 1.22, scaleEnd: 1.22 },
+                    { label: 'സാവധാനം പുറത്തേക്ക് വിടൂ...', duration: 4, scaleStart: 1.22, scaleEnd: 0.68 }
+                ]
+            },
+            relax: {
+                name: '4-7-8 ഗാഢമായ വിശ്രമം',
+                desc: 'നല്ല ഉറക്കത്തിനും അമിതമായ ആധി കുറയ്ക്കാനും ഉത്തമം',
+                phases: [
+                    { label: 'ശ്വാസം ഉള്ളിലേക്ക് എടുക്കൂ...', duration: 4, scaleStart: 0.68, scaleEnd: 1.22 },
+                    { label: 'അല്പനേരം പിടിച്ചു നിർത്തൂ...', duration: 7, scaleStart: 1.22, scaleEnd: 1.22 },
+                    { label: 'സാവധാനം പുറത്തേക്ക് വിടൂ...', duration: 8, scaleStart: 1.22, scaleEnd: 0.68 }
+                ]
+            },
+            coherent: {
+                name: 'ശാന്തമായ ശ്വാസം (5-5)',
+                desc: 'മനസ്സിനും ഹൃദയത്തിനും ഒരേ താളം നൽകുന്നു',
+                phases: [
+                    { label: 'സാവധാനം ഉള്ളിലേക്ക് എടുക്കൂ...', duration: 5, scaleStart: 0.68, scaleEnd: 1.22 },
+                    { label: 'സാവധാനം പുറത്തേക്ക് വിടൂ...', duration: 5, scaleStart: 1.22, scaleEnd: 0.68 }
+                ]
+            }
+        };
+
+        let currentBreathMode = 'box';
+        let currentPhaseIndex = 0;
+        let phaseElapsed = 0;
+        let isBreathingActive = true;
+        let lastFrameTime = performance.now();
+        let sessionSeconds = 0;
+
+        function setBreathingMode(modeKey) {
+            if (!breathingModes[modeKey]) return;
+            currentBreathMode = modeKey;
+            currentPhaseIndex = 0;
+            phaseElapsed = 0;
+
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.remove('bg-white/25', 'font-semibold');
+                btn.classList.add('opacity-75');
+            });
+            const activeBtn = document.getElementById(`mode-${modeKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white/25', 'font-semibold');
+                activeBtn.classList.remove('opacity-75');
+            }
+            document.getElementById('breath-mode-desc').textContent = breathingModes[modeKey].desc;
+        }
+
+        function toggleBreathing() {
+            isBreathingActive = !isBreathingActive;
+            const textEl = document.getElementById('breath-toggle-text');
+            const iconEl = document.getElementById('breath-toggle-icon');
+            if (isBreathingActive) {
+                textEl.textContent = 'നിർത്താം';
+                iconEl.setAttribute('data-lucide', 'pause');
+                lastFrameTime = performance.now();
+            } else {
+                textEl.textContent = 'തുടങ്ങാം';
+                iconEl.setAttribute('data-lucide', 'play');
+            }
+            lucide.createIcons();
+        }
+
+        function updateBreathingAnimation(now) {
+            const dt = (now - lastFrameTime) / 1000;
+            lastFrameTime = now;
+
+            if (isBreathingActive) {
+                const mode = breathingModes[currentBreathMode];
+                const phase = mode.phases[currentPhaseIndex];
+                phaseElapsed += dt;
+
+                if (phaseElapsed >= phase.duration) {
+                    phaseElapsed = 0;
+                    currentPhaseIndex = (currentPhaseIndex + 1) % mode.phases.length;
+                }
+
+                const activePhase = mode.phases[currentPhaseIndex];
+                const progress = Math.min(1, phaseElapsed / activePhase.duration);
+                const eased = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+                const scale = activePhase.scaleStart + (activePhase.scaleEnd - activePhase.scaleStart) * eased;
+
+                const orb = document.getElementById('breath-orb');
+                const ringOuter = document.getElementById('breath-ring-outer');
+                const ringInner = document.getElementById('breath-ring-inner');
+
+                orb.style.transform = `scale(${scale.toFixed(3)})`;
+                ringInner.style.transform = `scale(${(scale * 0.96).toFixed(3)})`;
+                ringOuter.style.transform = `scale(${(scale * 1.05).toFixed(3)})`;
+
+                document.getElementById('breath-instruction').textContent = activePhase.label;
+                const remaining = Math.ceil(Math.max(0.1, activePhase.duration - phaseElapsed));
+                document.getElementById('breath-timer').textContent = `${remaining} സെക്കൻഡ്`;
+            }
+
+            requestAnimationFrame(updateBreathingAnimation);
+        }
+
+        setInterval(() => {
+            if (!isBreathingActive) return;
+            sessionSeconds++;
+            const mins = String(Math.floor(sessionSeconds / 60)).padStart(2, '0');
+            const secs = String(sessionSeconds % 60).padStart(2, '0');
+            document.getElementById('session-clock').textContent = `${mins}:${secs}`;
+        }, 1000);
+
+        /* ==========================================================================
+           4. PROCEDURAL KERALA SOUNDSCAPE ENGINE (Web Audio API)
+           ========================================================================== */
+        let audioCtx = null;
+        const soundNodes = {
+            rain: null,
+            ocean: null,
+            bowl: null,
+            binaural: null
+        };
+        const soundVolumes = {
+            rain: 0,
+            ocean: 0,
+            bowl: 0,
+            binaural: 0
+        };
+        let bowlInterval = null;
+
+        function ensureAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function createPinkNoiseBuffer() {
+            const bufferSize = audioCtx.sampleRate * 4;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const output = buffer.getChannelData(0);
+            let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+            for (let i = 0; i < bufferSize; i++) {
+                const white = Math.random() * 2 - 1;
+                b0 = 0.99886 * b0 + white * 0.0555179;
+                b1 = 0.99332 * b1 + white * 0.0750759;
+                b2 = 0.96900 * b2 + white * 0.1538520;
+                b3 = 0.86650 * b3 + white * 0.3104856;
+                b4 = 0.55000 * b4 + white * 0.5329522;
+                b5 = -0.7616 * b5 - white * 0.0168980;
+                output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+                output[i] *= 0.04;
+                b6 = white * 0.115926;
+            }
+            return buffer;
+        }
+
+        function startSoundLayer(type) {
+            ensureAudioContext();
+            if (soundNodes[type]) return;
+
+            if (type === 'rain') {
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = createPinkNoiseBuffer();
+                noise.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 1100;
+
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.value = 0.001;
+
+                noise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                noise.start();
+
+                soundNodes.rain = { source: noise, gain: gainNode };
+            } else if (type === 'ocean') {
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = createPinkNoiseBuffer();
+                noise.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 360;
+
+                const lfo = audioCtx.createOscillator();
+                lfo.type = 'sine';
+                lfo.frequency.value = 0.14;
+
+                const lfoGain = audioCtx.createGain();
+                lfoGain.gain.value = 240;
+                lfo.connect(lfoGain);
+                lfoGain.connect(filter.frequency);
+
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.value = 0.001;
+
+                noise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                noise.start();
+                lfo.start();
+                soundNodes.ocean = { source: noise, lfo: lfo, gain: gainNode };
+            } else if (type === 'bowl') {
+                const masterGain = audioCtx.createGain();
+                masterGain.gain.value = 0.001;
+                masterGain.connect(audioCtx.destination);
+                soundNodes.bowl = { gain: masterGain };
+
+                triggerBowlChord();
+                bowlInterval = setInterval(() => {
+                    if (soundVolumes.bowl > 0) {
+                        triggerBowlChord();
+                    }
+                }, 6200);
+            } else if (type === 'binaural') {
+                // Soothing Sa-Pa Tambura / Shruti Drone
+                const saOsc = audioCtx.createOscillator();
+                const paOsc = audioCtx.createOscillator();
+                saOsc.type = 'sine';
+                paOsc.type = 'sine';
+                saOsc.frequency.value = 146.83; // D3 (Warm Sa)
+                paOsc.frequency.value = 220.00; // A3 (Fifth Pa)
+
+                const merger = audioCtx.createChannelMerger(2);
+                const leftGain = audioCtx.createGain();
+                const rightGain = audioCtx.createGain();
+                leftGain.gain.value = 0.14;
+                rightGain.gain.value = 0.11;
+
+                saOsc.connect(leftGain);
+                paOsc.connect(rightGain);
+                leftGain.connect(merger, 0, 0);
+                rightGain.connect(merger, 0, 1);
+
+                const masterGain = audioCtx.createGain();
+                masterGain.gain.value = 0.001;
+                merger.connect(masterGain);
+                masterGain.connect(audioCtx.destination);
+
+                saOsc.start();
+                paOsc.start();
+                soundNodes.binaural = { leftOsc: saOsc, rightOsc: paOsc, gain: masterGain };
+            }
+        }
+
+        function triggerBowlChord() {
+            if (!audioCtx || !soundNodes.bowl) return;
+            const freqs = [293.66, 440, 587.33]; // Warm temple chime harmonics
+            const baseFreq = freqs[Math.floor(Math.random() * freqs.length)];
+            const now = audioCtx.currentTime;
+
+            const osc = audioCtx.createOscillator();
+            const overtone = audioCtx.createOscillator();
+            osc.type = 'sine';
+            overtone.type = 'sine';
+            osc.frequency.value = baseFreq;
+            overtone.frequency.value = baseFreq * 2.756;
+
+            const env = audioCtx.createGain();
+            env.gain.setValueAtTime(0.0001, now);
+            env.gain.linearRampToValueAtTime(0.18, now + 0.35);
+            env.gain.exponentialRampToValueAtTime(0.0001, now + 5.8);
+
+            const overtoneGain = audioCtx.createGain();
+            overtoneGain.gain.value = 0.045;
+
+            osc.connect(env);
+            overtone.connect(overtoneGain);
+            overtoneGain.connect(env);
+            env.connect(soundNodes.bowl.gain);
+
+            osc.start(now);
+            overtone.start(now);
+            osc.stop(now + 6.0);
+            overtone.stop(now + 6.0);
+        }
+
+        function ringManualChime() {
+            ensureAudioContext();
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const env = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(528, now);
+            env.gain.setValueAtTime(0.001, now);
+            env.gain.linearRampToValueAtTime(0.18, now + 0.06);
+            env.gain.exponentialRampToValueAtTime(0.0001, now + 4.2);
+
+            osc.connect(env);
+            env.connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 4.3);
+        }
+
+        function changeSoundVolume(type, val) {
+            const numericVal = parseInt(val, 10);
+            soundVolumes[type] = numericVal;
+            const label = document.getElementById(`val-sound-${type}`);
+            const btn = document.getElementById(`btn-sound-${type}`);
+
+            if (numericVal > 0) {
+                if (!soundNodes[type]) startSoundLayer(type);
+                const normalized = (numericVal / 100) * 0.7;
+                soundNodes[type].gain.gain.setTargetAtTime(normalized, audioCtx.currentTime, 0.15);
+                label.textContent = `${numericVal}%`;
+                btn.classList.add('bg-amber-400/30', 'border', 'border-amber-300/50');
+            } else {
+                if (soundNodes[type]) {
+                    soundNodes[type].gain.gain.setTargetAtTime(0.0001, audioCtx.currentTime, 0.15);
+                }
+                label.textContent = 'ഓഫ്';
+                btn.classList.remove('bg-amber-400/30', 'border', 'border-amber-300/50');
+            }
+        }
+
+        function toggleSound(type) {
+            const slider = document.getElementById(`slider-sound-${type}`);
+            if (soundVolumes[type] > 0) {
+                slider.value = 0;
+                changeSoundVolume(type, 0);
+            } else {
+                const defaultVol = type === 'binaural' ? 35 : 55;
+                slider.value = defaultVol;
+                changeSoundVolume(type, defaultVol);
+            }
+        }
+
+        function stopAllSounds() {
+            ['rain', 'ocean', 'bowl', 'binaural'].forEach(type => {
+                const slider = document.getElementById(`slider-sound-${type}`);
+                if (slider) slider.value = 0;
+                changeSoundVolume(type, 0);
+            });
+        }
+
+        function activateInstantCalm() {
+            setBreathingMode('coherent');
+            document.getElementById('slider-sound-rain').value = 55;
+            changeSoundVolume('rain', 55);
+            document.getElementById('slider-sound-ocean').value = 35;
+            changeSoundVolume('ocean', 35);
+            document.getElementById('slider-sound-bowl').value = 45;
+            changeSoundVolume('bowl', 45);
+            ringManualChime();
+        }
+
+        /* ==========================================================================
+           5. INTERACTIVE LOTUS & DIYA RIPPLE POND ("താമരക്കുളം")
+           ========================================================================== */
+        const pondCanvas = document.getElementById('zen-pond-canvas');
+        const pondCtx = pondCanvas.getContext('2d');
+        let ripples = [];
+        let pondParticles = [];
+        let autoDropsEnabled = true;
+
+        function resizePondCanvas() {
+            const rect = pondCanvas.parentElement.getBoundingClientRect();
+            pondCanvas.width = rect.width;
+            pondCanvas.height = rect.height;
+        }
+        window.addEventListener('resize', resizePondCanvas);
+
+        function addRipple(x, y, maxRadius = 85, spawnPetal = false) {
+            ripples.push({
+                x,
+                y,
+                radius: 2,
+                maxRadius,
+                alpha: 0.78,
+                speed: 1.1
+            });
+            // Spawn warm floating diya lights & pink lotus petals
+            const count = spawnPetal ? 4 : 2;
+            for (let i = 0; i < count; i++) {
+                const isLotusPetal = Math.random() > 0.45;
+                pondParticles.push({
+                    x,
+                    y,
+                    vx: (Math.random() - 0.5) * 1.2,
+                    vy: (Math.random() - 0.5) * 1.2 - 0.25,
+                    size: isLotusPetal ? Math.random() * 4 + 3.5 : Math.random() * 2.5 + 2,
+                    isPetal: isLotusPetal,
+                    alpha: 0.95
+                });
+            }
+        }
+
+        pondCanvas.addEventListener('pointerdown', (e) => {
+            const rect = pondCanvas.getBoundingClientRect();
+            addRipple(e.clientX - rect.left, e.clientY - rect.top, 105, true);
+        });
+
+        let lastMoveRipple = 0;
+        pondCanvas.addEventListener('pointermove', (e) => {
+            const now = performance.now();
+            if (now - lastMoveRipple > 90) {
+                const rect = pondCanvas.getBoundingClientRect();
+                addRipple(e.clientX - rect.left, e.clientY - rect.top, 68, true);
+                lastMoveRipple = now;
+            }
+        });
+
+        function toggleAutoDrops() {
+            autoDropsEnabled = !autoDropsEnabled;
+            document.getElementById('auto-drop-btn').textContent = `മഴത്തുള്ളികൾ: ${autoDropsEnabled ? 'ഓൺ' : 'ഓഫ്'}`;
+        }
+
+        function clearPond() {
+            ripples = [];
+            pondParticles = [];
+        }
+
+        function animatePond() {
+            pondCtx.clearRect(0, 0, pondCanvas.width, pondCanvas.height);
+
+            if (autoDropsEnabled && Math.random() < 0.03 && pondCanvas.width > 0) {
+                addRipple(
+                    Math.random() * pondCanvas.width,
+                    Math.random() * pondCanvas.height,
+                    72,
+                    false
+                );
+            }
+
+            // Draw Water Ripples
+            for (let i = ripples.length - 1; i >= 0; i--) {
+                const r = ripples[i];
+                r.radius += r.speed;
+                r.alpha = Math.max(0, (1 - r.radius / r.maxRadius) * 0.65);
+
+                pondCtx.beginPath();
+                pondCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+                pondCtx.strokeStyle = `rgba(${currentParticleRGB}, ${r.alpha})`;
+                pondCtx.lineWidth = 1.6;
+                pondCtx.stroke();
+
+                if (r.radius > 14) {
+                    pondCtx.beginPath();
+                    pondCtx.arc(r.x, r.y, r.radius * 0.65, 0, Math.PI * 2);
+                    pondCtx.strokeStyle = `rgba(${currentParticleRGB}, ${r.alpha * 0.5})`;
+                    pondCtx.lineWidth = 1;
+                    pondCtx.stroke();
+                }
+
+                if (r.radius >= r.maxRadius) {
+                    ripples.splice(i, 1);
+                }
+            }
+
+            // Draw Floating Lotus Petals & Golden Diya Lights
+            for (let i = pondParticles.length - 1; i >= 0; i--) {
+                const p = pondParticles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.011;
+
+                pondCtx.beginPath();
+                if (p.isPetal) {
+                    // Soft pink lotus petal oval
+                    pondCtx.ellipse(p.x, p.y, p.size, p.size * 0.6, Math.PI / 4, 0, Math.PI * 2);
+                    pondCtx.fillStyle = `rgba(251, 182, 206, ${Math.max(0, p.alpha)})`;
+                } else {
+                    // Warm golden diya spark
+                    pondCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    pondCtx.fillStyle = `rgba(253, 224, 71, ${Math.max(0, p.alpha)})`;
+                }
+                pondCtx.fill();
+
+                if (p.alpha <= 0) {
+                    pondParticles.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animatePond);
+        }
+
+        /* ==========================================================================
+           6. WORRY RELEASE ("മനസ്സിലെ ഭാരങ്ങൾ ഒഴുക്കിവിടാം")
+           ========================================================================== */
+        let releasedThoughtsCount = 0;
+
+        function quickReleaseWorry(worryText) {
+            const input = document.getElementById('thought-input');
+            input.value = worryText;
+            triggerWorryRelease(worryText);
+            input.value = '';
+        }
+
+        function releaseThought(e) {
+            e.preventDefault();
+            const input = document.getElementById('thought-input');
+            const text = input.value.trim();
+            if (!text) return;
+            triggerWorryRelease(text);
+            input.value = '';
+        }
+
+        function triggerWorryRelease(text) {
+            const stage = document.getElementById('thought-stage');
+            const placeholder = document.getElementById('thought-placeholder');
+            if (placeholder) placeholder.style.display = 'none';
+
+            const bubble = document.createElement('div');
+            bubble.className = 'dissolving-thought absolute px-5 py-2.5 rounded-full bg-amber-300/20 border border-amber-200/40 text-sm sm:text-base serif-ml font-medium text-center max-w-xs pointer-events-none shadow-lg';
+            bubble.textContent = `🌸 "${text}"`;
+            stage.appendChild(bubble);
+
+            releasedThoughtsCount++;
+            document.getElementById('released-count').textContent = `${releasedThoughtsCount} ഭാരങ്ങൾ ഒഴുക്കിവിട്ടു`;
+
+            if (audioCtx && audioCtx.state === 'running') {
+                ringManualChime();
+            }
+
+            setTimeout(() => {
+                bubble.remove();
+                if (stage.children.length <= 1 && placeholder) {
+                    placeholder.style.display = 'block';
+                    placeholder.textContent = 'ആ ഭാരം മാറിപ്പോയിരിക്കുന്നു... ഇനി സമാധാനമായി ദീർഘശ്വാസം എടുക്കൂ.';
+                }
+            }, 4100);
+        }
+
+        /* ==========================================================================
+           7. "5 മിനിറ്റ് അമ്മയ്ക്ക് മാത്രം" SELF-CARE CHECKLIST
+           ========================================================================== */
+        const groundingState = [false, false, false, false, false];
+
+        function toggleGroundingStep(index) {
+            groundingState[index] = !groundingState[index];
+            const card = document.getElementById(`ground-card-${index}`);
+            if (groundingState[index]) {
+                card.classList.add('bg-emerald-500/25', 'border-emerald-300/60');
+                card.classList.remove('bg-black/25', 'border-white/15');
+            } else {
+                card.classList.remove('bg-emerald-500/25', 'border-emerald-300/60');
+                card.classList.add('bg-black/25', 'border-white/15');
+            }
+
+            const allDone = groundingState.every(Boolean);
+            const banner = document.getElementById('grounding-complete-banner');
+            if (allDone) {
+                banner.classList.remove('hidden');
+                if (audioCtx && audioCtx.state === 'running') ringManualChime();
+            } else {
+                banner.classList.add('hidden');
+            }
+        }
+
+        function resetGrounding() {
+            for (let i = 0; i < 5; i++) {
+                groundingState[i] = false;
+                const card = document.getElementById(`ground-card-${i}`);
+                card.classList.remove('bg-emerald-500/25', 'border-emerald-300/60');
+                card.classList.add('bg-black/25', 'border-white/15');
+            }
+            document.getElementById('grounding-complete-banner').classList.add('hidden');
+        }
+
+        /* ==========================================================================
+           8. AMBIENT BACKGROUND PARTICLES
+           ========================================================================== */
+        const bgCanvas = document.getElementById('ambient-bg-canvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let bgParticles = [];
+
+        function initBgParticles() {
+            bgCanvas.width = window.innerWidth;
+            bgCanvas.height = window.innerHeight;
+            bgParticles = [];
+            const count = Math.min(45, Math.floor(window.innerWidth / 30));
+            for (let i = 0; i < count; i++) {
+                bgParticles.push({
+                    x: Math.random() * bgCanvas.width,
+                    y: Math.random() * bgCanvas.height,
+                    r: Math.random() * 2.2 + 0.6,
+                    vx: (Math.random() - 0.5) * 0.25,
+                    vy: -Math.random() * 0.35 - 0.1,
+                    alpha: Math.random() * 0.45 + 0.1
+                });
+            }
+        }
+        window.addEventListener('resize', initBgParticles);
+
+        function animateBgParticles() {
+            bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+            for (const p of bgParticles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.y < -10) p.y = bgCanvas.height + 10;
+                if (p.x < -10) p.x = bgCanvas.width + 10;
+                if (p.x > bgCanvas.width + 10) p.x = -10;
+
+                bgCtx.beginPath();
+                bgCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                bgCtx.fillStyle = `rgba(${currentParticleRGB}, ${p.alpha})`;
+                bgCtx.fill();
+            }
+            requestAnimationFrame(animateBgParticles);
+        }
+
+        window.onload = function () {
+            initBgParticles();
+            animateBgParticles();
+            resizePondCanvas();
+            animatePond();
+            lastFrameTime = performance.now();
+            requestAnimationFrame(updateBreathingAnimation);
+        };
+    </script>
+</body>
+</html>
